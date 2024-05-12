@@ -7,7 +7,7 @@ const Header = async () => {
   const token = cookies().get("cookie");
 
   return (
-    <div className="w-screen bg-[#F7F7F7] drop-shadow-md border-b text-primary flex items-center justify-center">
+    <div className="w-full px-8 lg:px-0 2xl:px-0  bg-[#F7F7F7] drop-shadow-md border-b text-primary flex items-center justify-center">
       <div className="w-[1440px] flex  justify-between items-center">
         <Link href="/">
           <Image

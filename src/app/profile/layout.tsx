@@ -22,9 +22,9 @@ export default async function ProfileLayout({
   const user = await getUserFromCookie({ withCV: false });
 
   return (
-    <div className="flex flex-col w-screen items-center">
+    <div className="flex flex-col w-full items-center">
       <Header />
-      <div className="w-[1440px] flex  gap-8 ">
+      <div className="2xl:w-[1440px] w-full flex  flex-col lg:flex-row 2xl:flex-row gap-8 ">
         <LayoutProfile
           user={JSON.parse(JSON.stringify(user)) as UserInterface}
         />

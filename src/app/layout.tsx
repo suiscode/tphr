@@ -21,13 +21,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-[#F7F7F7]`}>
+      <body
+        className={`${inter.className} overflow-x-hidden w-screen bg-[#F7F7F7]`}
+      >
         <GlobalContextProvider>
-          <main className="container ">
-            <div className="flex items-start  justify-center min-h-screen">
-              <div className="">{children}</div>
-            </div>
-          </main>
+          <div className="flex items-start w-full justify-center min-h-screen">
+            {children}
+          </div>
         </GlobalContextProvider>
         <Toaster />
       </body>

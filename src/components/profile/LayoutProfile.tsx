@@ -19,9 +19,6 @@ const LayoutProfile = ({ user }: { user: UserInterface }) => {
     setImage(user.image);
   }, []);
 
-
- 
-
   const handleUpload = async (event: ChangeEvent<HTMLInputElement>) => {
     const res = await axios(`/api/r2?id=${user._id}`);
     const uploadUrl = res.data.uploadUrl;
@@ -70,7 +67,7 @@ const LayoutProfile = ({ user }: { user: UserInterface }) => {
         </label>
       </div>
       <h1 className="text-sm">{user?.email}</h1>
-      <ul className="flex gap-2 text-sm flex-col w-full px-4 ">
+      <ul className="flex gap-2 text-sm flex-col lg:w-full 2xl:w-full w-[480px] px-4 ">
         {links.map((link) => {
           return (
             <Link href={link.href} key={link.href}>
