@@ -1,12 +1,12 @@
-// import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 // import { NewPasswordSchema, ResetSchema } from "@/lib/schema";
 // import { generatePasswordResetToken } from "@/lib/tokens";
 // import { sendPasswordResetEmail } from "@/lib/mail";
 // import { getPasswordResetTokenByToken } from "@/lib/password-reset-token";
 // import { db } from "@/lib/db";
 
-// export const POST = async (req: NextRequest) => {
-//   const body = await req.json();
+export const POST = async (req: NextRequest) => {
+  const body = await req.json();
 //   const validatedFields = ResetSchema.safeParse(body);
 //   if (!validatedFields.success) {
 //     return NextResponse.json({ error: "Invalid email" }, { status: 400 });
@@ -24,8 +24,8 @@
 //     passwordResetToken.token
 //   );
 
-//   return NextResponse.json({ success: "Reset email sent" }, { status: 200 });
-// };
+  return NextResponse.json({ success: "Reset email sent" }, { status: 200 });
+};
 
 // export const PUT = async (req: NextRequest) => {
 //   const body = await req.json();

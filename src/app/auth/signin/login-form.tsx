@@ -132,7 +132,7 @@ export default function LoginForm() {
                   className="text-primary p-0"
                   type="button"
                 >
-                  <Link href="/auth/signup">Don't have an account?</Link>
+                  <Link href="/auth/signup">Don&apost have an account?</Link>
                 </Button>
               </div>
             </div>
