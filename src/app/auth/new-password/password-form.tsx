@@ -47,7 +47,6 @@ export default function NewPasswordForm() {
         push("/auth/signin");
         form.reset();
       } catch (e: any) {
-        console.log(e);
 
         toast({
           variant: "destructive",

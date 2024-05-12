@@ -11,12 +11,10 @@ export const middleware = async (req: NextRequest) => {
   const isAdmin =
     token &&
     (await verifyAuth(token).catch((err) => {
-      console.log(err);
     }));
   if (requestedUrl.pathname.startsWith("/admin") && !isAdmin) {
     return NextResponse.redirect(new URL("/profile", req.url));
   }
-  console.log(isAdmin, "checking if is admin");
 
   if (
     (requestedUrl.pathname === "/auth/signin" ||

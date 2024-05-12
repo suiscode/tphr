@@ -27,7 +27,6 @@ export async function GET(req) {
     })
   );
   connectToDb();
-  console.log(userId);
   await User.findByIdAndUpdate(
     userId,
     {

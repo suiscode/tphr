@@ -31,7 +31,6 @@ export const POST = async (req: NextRequest) => {
 
     return NextResponse.json({ success: "Password changed" }, { status: 200 });
   } catch (e) {
-    console.log(e);
     return NextResponse.json(e, { status: 500 });
   }
 };
@@ -47,7 +46,6 @@ export const GET = async (req: NextRequest) => {
     );
   }
   const passwordResetToken = await generatePasswordResetToken(email as string);
-  console.log("token generated dasdasdasdasd");
 
   await sendPasswordResetEmail(
     passwordResetToken.email,
@@ -75,7 +73,6 @@ export const PUT = async (req: NextRequest) => {
   }
 
   const existingUser = await User.findOne({ email: existingToken.email });
-  console.log(existingUser);
 
   const hashedPassword = await bcrypt.hash(password, 10);
   await User.findByIdAndUpdate(

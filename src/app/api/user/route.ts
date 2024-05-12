@@ -4,7 +4,7 @@ import { CV } from "../model";
 export const PUT = async (req: NextRequest) => {
   const body = await req.json();
   const { values, _id } = body;
-  console.log(body,'from BODY');
+  console.log(body, "from BODY");
 
   try {
     const user = await CV.findByIdAndUpdate(

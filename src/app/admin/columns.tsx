@@ -52,7 +52,6 @@ export const columns: ColumnDef<User>[] = [
     },
     cell: ({ row }) => {
       const dateString = row.getValue("createdAt");
-      console.log(dateString, "dasjodasjdklasjdklasdkl;asjda");
       const date = new Date(dateString as string);
       const year = date.getFullYear().toString();
       const month = (date.getMonth() + 1).toString().padStart(2, "0");
@@ -81,7 +80,6 @@ export const columns: ColumnDef<User>[] = [
     },
     cell: ({ row }) => {
       const dateString = row.getValue("updatedAt");
-      console.log(dateString, "dasjodasjdklasjdklasdkl;asjda");
       const date = new Date(dateString as string);
       const year = date.getFullYear().toString();
       const month = (date.getMonth() + 1).toString().padStart(2, "0");

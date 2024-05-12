@@ -39,9 +39,7 @@ export default function LoginForm() {
       try {
         const res = await axios.post("/api/auth/login", values);
         window.location.reload();
-        console.log(res);
       } catch (e: any) {
-        console.log(e);
 
         if (e.response.data.error) {
           form.reset();

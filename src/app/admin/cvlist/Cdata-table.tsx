@@ -93,7 +93,6 @@ export function CDataTable<TData, TValue>({
 
               <Select
                 onValueChange={(event) => {
-                  console.log(event);
                   if (event === "ALL") {
                     table.getColumn(item.value)?.setFilterValue("");
                     return;

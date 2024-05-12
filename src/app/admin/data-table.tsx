@@ -68,7 +68,6 @@ export function DataTable<TData, TValue>({
         </div>
         <Select
           onValueChange={(event) => {
-            console.log(event);
             if (event === "ALL") {
               table.getColumn("role")?.setFilterValue("");
               return;

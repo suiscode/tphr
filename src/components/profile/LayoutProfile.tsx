@@ -15,7 +15,6 @@ const LayoutProfile = ({ user }: { user: UserInterface }) => {
   const pathname = usePathname();
   const [image, setImage] = useState<string | null>();
   useEffect(() => {
-    console.log(user.image);
     setImage(user.image);
   }, []);
 

@@ -13,7 +13,6 @@ const links = [
 
 const Header = () => {
   const pathname = usePathname();
-  console.log(pathname);
 
   return (
     <div className="w-screen bg-[#F7F7F7] drop-shadow-md border-b text-primary flex items-center justify-center">

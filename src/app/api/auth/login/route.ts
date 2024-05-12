@@ -17,7 +17,6 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
     cookies().set("cookie", generateToken(user));
     return NextResponse.json("Signed in", { status: 200 });
   } catch (e) {
-    console.log(e);
     return NextResponse.json(e, { status: 500 });
   }
 };

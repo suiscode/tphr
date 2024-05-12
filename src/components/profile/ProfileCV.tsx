@@ -14,7 +14,6 @@ const ProfileCV = ({ user }: any) => {
   const [userCv, setUserCv] = useState<any>(user.cv);
 
   const onSubmit = async (values: any) => {
-    console.log(values);
 
     try {
       setUserCv((prev: any) => ({ ...prev, ...values }));
