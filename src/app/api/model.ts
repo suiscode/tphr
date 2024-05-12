@@ -1,3 +1,4 @@
+import { careers, countries, degree, salary, timeshift } from "@/lib/model";
 import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
@@ -26,24 +27,6 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
-const careers = [
-  "Software Engineer",
-  "Data Scientist",
-  "Product Manager",
-  "UX/UI Designer",
-  "Marketing Specialist",
-  "Financial Analyst",
-  "Human Resources Manager",
-  "Sales Representative",
-  "Content Writer",
-  "Graphic Designer",
-  "Business Analyst",
-  "Project Manager",
-  "Customer Success Manager",
-  "Web Developer",
-  "Accountant",
-];
-
 const cvSchema = new Schema({
   about: String,
   education: String,
@@ -64,10 +47,26 @@ const cvSchema = new Schema({
   address: String,
   career: {
     type: String,
-    enum: [...careers],
+    enum: careers,
   },
-  salaryExpectency: Number,
-  workDuration: String,
+  salaryExpectency: {
+    type: String,
+    enum: salary,
+  },
+  workDuration: {
+    type: String,
+    enum: timeshift,
+  },
+  degree: {
+    type: String,
+    enum: degree,
+  },
+  schoolCountry: {
+    type: String,
+    enum: countries,
+  },
+  GPA: String,
+  schoolName: String,
   instagram: String,
   facebook: String,
   linkedin: String,
@@ -83,6 +82,7 @@ const passwordResetTokenSchema = new Schema({
   },
   expires: Date,
 });
+
 
 export const PasswordResetToken =
   mongoose.models.PasswordResetToken ||

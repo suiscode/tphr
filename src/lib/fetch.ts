@@ -1,4 +1,4 @@
-import { User } from "@/app/api/model";
+import { CV, User } from "@/app/api/model";
 import { connectToDb } from "@/app/api/utilts";
 import { cookies } from "next/headers";
 import jwt, { JwtPayload } from "jsonwebtoken";
@@ -25,4 +25,10 @@ export const getAllUser = async () => {
   connectToDb();
   const users = await User.find();
   return users;
+};
+
+export const getAllCV = async () => {
+  connectToDb();
+  const cv = await CV.find();
+  return cv;
 };

@@ -18,8 +18,12 @@ export interface userCV {
   email: string;
   address?: string;
   career?: string;
-  salaryExpectency?: number;
+  salaryExpectency?: string;
   workDuration?: string;
+  GPA: string;
+  schoolName: string;
+  schoolCountry: string;
+  degree: string;
   instagram?: string;
   facebook?: string;
   linkedin?: string;

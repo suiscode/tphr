@@ -1,18 +1,17 @@
 "use client";
-import { UserInterface, userCV } from "@/lib/interface";
-import React, { useEffect, useState } from "react";
+import { userCV } from "@/lib/interface";
+import React, { useState } from "react";
 import CVgeneral from "./CVgeneral";
 import { useToast } from "@/components/ui/use-toast";
 import axios from "axios";
 import CVcontact from "./CVcontact";
+import CVworkex from "./CVworkex";
+import CVeducation from "./CVeducation";
 
 const ProfileCV = ({ user }: any) => {
   const toast = useToast();
 
   const [userCv, setUserCv] = useState<any>(user.cv);
-  useEffect(() => {
-    console.log(userCv);
-  }, [userCv]);
 
   const onSubmit = async (values: any) => {
     console.log(values);
@@ -44,6 +43,14 @@ const ProfileCV = ({ user }: any) => {
         onSubmit={onSubmit}
       />
       <CVcontact
+        userCv={JSON.parse(JSON.stringify(userCv)) as userCV}
+        onSubmit={onSubmit}
+      />
+      <CVworkex
+        userCv={JSON.parse(JSON.stringify(userCv)) as userCV}
+        onSubmit={onSubmit}
+      />
+      <CVeducation
         userCv={JSON.parse(JSON.stringify(userCv)) as userCV}
         onSubmit={onSubmit}
       />

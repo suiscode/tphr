@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import { getAllCV } from "@/lib/fetch";
+import { CvColumn } from "./CvColumn";
+import { CDataTable } from "./Cdata-table";
 
-const page = () => {
+const AdminCVPage = async () => {
+  const data = await getAllCV();
   return (
-    <div>page</div>
-  )
-}
+    <div className="w-full">
+      <CDataTable columns={CvColumn} data={JSON.parse(JSON.stringify(data))} />
+    </div>
+  );
+};
 
-export default page
+export default AdminCVPage;

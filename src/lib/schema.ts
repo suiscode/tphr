@@ -31,6 +31,31 @@ export const contactSchema = z.object({
   linkedin: z.optional(z.string()),
 });
 
+export const careerPathSchema = z.object({
+  career: z.string().min(1, {
+    message: "Field is required",
+  }),
+  salaryExpectency: z.string().min(1, {
+    message: "Field is required",
+  }),
+  workDuration: z.string().min(1, {
+    message: "Field is required",
+  }),
+});
+
+export const educationSchema = z.object({
+  GPA: z.optional(z.string()),
+  schoolName: z.string().min(1, {
+    message: "Field is required",
+  }),
+  schoolCountry: z.string().min(1, {
+    message: "Field is required",
+  }),
+  degree: z.string().min(1, {
+    message: "Field is required",
+  }),
+});
+
 export const NewPasswordSchema = z.object({
   password: z.string().min(6, {
     message: "Minimum 6 characters required",
