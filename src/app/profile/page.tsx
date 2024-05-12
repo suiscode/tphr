@@ -4,14 +4,7 @@ import ProfileCV from "@/components/profile/ProfileCV";
 import { getUserFromCookie } from "@/lib/fetch";
 
 const ProfilePage = async () => {
-  async function fetchData(user: string) {
-    const res = await fetch(`/api/user?state=${user}`, {
-      cache: "no-cache",
-    });
-    return res;
-  }
-
-  const user = await fetchData("user");
+  const user = await getUserFromCookie({ withCV: true });
 
   return (
     <>
