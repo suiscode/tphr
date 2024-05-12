@@ -40,8 +40,9 @@ const ChangePasswordPage = () => {
         toast({
           variant: "default",
           title: res.data.success,
-          description: "Please check your current password",
+          description: "Password has successfully changed ",
         });
+        form.reset();
       } catch (e: any) {
         toast({
           variant: "destructive",

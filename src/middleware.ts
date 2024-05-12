@@ -16,7 +16,7 @@ export const middleware = async (req: NextRequest) => {
   if (requestedUrl.pathname.startsWith("/admin") && !isAdmin) {
     return NextResponse.redirect(new URL("/profile", req.url));
   }
-  console.log(isAdmin);
+  console.log(isAdmin, "checking if is admin");
 
   if (
     (requestedUrl.pathname === "/auth/signin" ||
