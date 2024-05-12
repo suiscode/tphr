@@ -63,7 +63,11 @@ const CVworkex = ({ userCv, onSubmit }: { userCv: userCV; onSubmit: any }) => {
                       </FormControl>
                       <SelectContent>
                         {timeshift.map((item: string) => {
-                          return <SelectItem value={item}>{item}</SelectItem>;
+                          return (
+                            <SelectItem key={item} value={item}>
+                              {item}
+                            </SelectItem>
+                          );
                         })}
                       </SelectContent>
                     </Select>
@@ -89,7 +93,11 @@ const CVworkex = ({ userCv, onSubmit }: { userCv: userCV; onSubmit: any }) => {
                       </FormControl>
                       <SelectContent>
                         {salary.map((item: string) => {
-                          return <SelectItem value={item}>{item}</SelectItem>;
+                          return (
+                            <SelectItem key={item} value={item}>
+                              {item}
+                            </SelectItem>
+                          );
                         })}
                       </SelectContent>
                     </Select>
@@ -115,7 +123,11 @@ const CVworkex = ({ userCv, onSubmit }: { userCv: userCV; onSubmit: any }) => {
                       </FormControl>
                       <SelectContent>
                         {careers.map((item: string) => {
-                          return <SelectItem value={item}>{item}</SelectItem>;
+                          return (
+                            <SelectItem key={item} value={item}>
+                              {item}
+                            </SelectItem>
+                          );
                         })}
                       </SelectContent>
                     </Select>

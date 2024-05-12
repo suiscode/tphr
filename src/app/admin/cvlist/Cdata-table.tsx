@@ -75,6 +75,7 @@ export function CDataTable<TData, TValue>({
         <div className="flex gap-4 w-full">
           {searchInputs.map((item) => (
             <Input
+              key={item.placeholder}
               placeholder={item.placeholder}
               value={
                 (table.getColumn(item.value)?.getFilterValue() as string) ?? ""
@@ -87,7 +88,7 @@ export function CDataTable<TData, TValue>({
         </div>
         <div className="flex gap-4 w-full">
           {searchSelect.map((item) => (
-            <div className="flex flex-col">
+            <div key={item.placeholder} className="flex flex-col">
               <h1>{item.placeholder}</h1>
 
               <Select
@@ -106,7 +107,9 @@ export function CDataTable<TData, TValue>({
                 <SelectContent>
                   <SelectItem value="ALL">None</SelectItem>
                   {item.mapList.map((item) => (
-                    <SelectItem value={item}>{item}</SelectItem>
+                    <SelectItem key={item} value={item}>
+                      {item}
+                    </SelectItem>
                   ))}
                 </SelectContent>
               </Select>

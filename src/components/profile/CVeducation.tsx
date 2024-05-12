@@ -71,7 +71,11 @@ const CVeducation = ({
                       </FormControl>
                       <SelectContent>
                         {countries.map((item: string) => {
-                          return <SelectItem value={item}>{item}</SelectItem>;
+                          return (
+                            <SelectItem key={item} value={item}>
+                              {item}
+                            </SelectItem>
+                          );
                         })}
                       </SelectContent>
                     </Select>
@@ -97,7 +101,11 @@ const CVeducation = ({
                       </FormControl>
                       <SelectContent>
                         {degree.map((item: string) => {
-                          return <SelectItem value={item}>{item}</SelectItem>;
+                          return (
+                            <SelectItem key={item} value={item}>
+                              {item}
+                            </SelectItem>
+                          );
                         })}
                       </SelectContent>
                     </Select>
