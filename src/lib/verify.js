@@ -5,7 +5,7 @@ export const verifyAuth = async (token) => {
     token,
     new TextEncoder().encode(process.env.ACCESS_TOKEN_SECRET)
   );
-  console.log(verified.payload.user.role);
+  console.log(verified.payload.user.role, 'CHECKING IF ADMIN FROM FUNCTION');
 
   if (verified.payload.user.role !== "ADMIN") {
     return false;
