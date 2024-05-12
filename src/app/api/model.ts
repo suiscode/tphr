@@ -2,26 +2,47 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
-  email: {
-    type: String,
-    required: true,
-    unique: true,
+const userSchema = new Schema(
+  {
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    image: {
+      type: String,
+    },
+    role: {
+      type: String,
+      enum: ["USER", "ADMIN"],
+      default: "USER",
+    },
+    cv: { type: Schema.Types.ObjectId, ref: "CV" },
   },
-  password: {
-    type: String,
-    required: true,
-  },
-  image: {
-    type: String,
-  },
-  role: {
-    type: String,
-    enum: ["USER", "ADMIN"],
-    default: "USER",
-  },
-  cv: { type: Schema.Types.ObjectId, ref: "CV" },
-});
+  { timestamps: true }
+);
+
+const careers = [
+  "Software Engineer",
+  "Data Scientist",
+  "Product Manager",
+  "UX/UI Designer",
+  "Marketing Specialist",
+  "Financial Analyst",
+  "Human Resources Manager",
+  "Sales Representative",
+  "Content Writer",
+  "Graphic Designer",
+  "Business Analyst",
+  "Project Manager",
+  "Customer Success Manager",
+  "Web Developer",
+  "Accountant",
+];
 
 const cvSchema = new Schema({
   about: String,
@@ -41,7 +62,10 @@ const cvSchema = new Schema({
     unique: true,
   },
   address: String,
-  career: String,
+  career: {
+    type: String,
+    enum: [...careers],
+  },
   salaryExpectency: Number,
   workDuration: String,
   instagram: String,

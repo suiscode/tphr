@@ -20,3 +20,9 @@ export const getUserFromCookie = async ({ withCV }: { withCV: boolean }) => {
     return user;
   }
 };
+
+export const getAllUser = async () => {
+  connectToDb();
+  const users = await User.find();
+  return users;
+};

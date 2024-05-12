@@ -5,10 +5,11 @@ import { BsPencil } from "react-icons/bs";
 import axios from "axios";
 import { UserInterface } from "@/lib/interface";
 import { RiPagesLine } from "react-icons/ri";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { IoIosLogOut } from "react-icons/io";
 import Link from "next/link";
 import Image from "next/image";
+import { handleSignOut } from "@/lib/utils";
 
 const LayoutProfile = ({ user }: { user: UserInterface }) => {
   const pathname = usePathname();
@@ -17,17 +18,9 @@ const LayoutProfile = ({ user }: { user: UserInterface }) => {
     console.log(user.image);
     setImage(user.image);
   }, []);
-  const { push } = useRouter();
 
-  const handleSignOut = async () => {
-    try {
-      await axios.put("/api/auth/login");
-      window.location.reload();
 
-    } catch (e) {
-      console.log(e);
-    }
-  };
+ 
 
   const handleUpload = async (event: ChangeEvent<HTMLInputElement>) => {
     const res = await axios(`/api/r2?id=${user._id}`);

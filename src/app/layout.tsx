@@ -19,12 +19,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <html lang="en">
       <body className={`${inter.className} bg-[#F7F7F7]`}>
         <GlobalContextProvider>
-          <Header />
           <main className="container ">
             <div className="flex items-start  justify-center min-h-screen">
               <div className="">{children}</div>

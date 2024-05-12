@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { verifyAuth } from "./lib/utils";
+import { verifyAuth } from "./lib/verify";
 
 export const middleware = async (req: NextRequest) => {
   const requestedUrl = new URL(req.url);
@@ -13,9 +13,10 @@ export const middleware = async (req: NextRequest) => {
     (await verifyAuth(token).catch((err) => {
       console.log(err);
     }));
-  if (requestedUrl.pathname === "/admin" && !isAdmin) {
+  if (requestedUrl.pathname.startsWith("/admin") && !isAdmin) {
     return NextResponse.redirect(new URL("/profile", req.url));
   }
+  console.log(isAdmin);
 
   if (
     (requestedUrl.pathname === "/auth/signin" ||
