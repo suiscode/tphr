@@ -23,9 +23,6 @@ import { useToast } from "@/components/ui/use-toast";
 
 export default function LoginForm() {
   const router = useRouter();
-  const [showTwoFactor, setShowTwoFactor] = useState(false);
-  const [error, setError] = useState<string | undefined>("");
-  const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
   const { toast } = useToast();
 
@@ -38,8 +35,6 @@ export default function LoginForm() {
   });
 
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
-    setSuccess("");
-    setError("");
     startTransition(async () => {
       try {
         const res = await axios.post("/api/auth/login", values);
@@ -61,7 +56,7 @@ export default function LoginForm() {
   };
 
   return (
-    <Wrapper label={"Нэвтрэх"}>
+    <Wrapper label={"Sign in"}>
       <Form {...form}>
         <form
           className="space-y-6 w-full"
@@ -118,7 +113,7 @@ export default function LoginForm() {
                   className="text-primary p-0"
                   type="button"
                 >
-                  <Link href="/auth/signup">Don&apost have an account?</Link>
+                  <Link href="/auth/signup">Don&apos;t have an account?</Link>
                 </Button>
               </div>
             </div>

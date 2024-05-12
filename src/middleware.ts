@@ -5,7 +5,7 @@ export const middleware = async (req: NextRequest) => {
   const requestedUrl = new URL(req.url);
   const token = req.cookies.get("cookie")?.value;
 
-  if (requestedUrl.pathname === "/profile" && !token) {
+  if (requestedUrl.pathname.startsWith("/profile") && !token) {
     return NextResponse.redirect(new URL("/auth/signin", req.url));
   }
   const isAdmin =
@@ -30,5 +30,13 @@ export const middleware = async (req: NextRequest) => {
 };
 
 export const config = {
-  matcher: ["/", "/profile", "/admin", "/auth/signin", "/auth/signup"],
+  matcher: [
+    "/",
+    "/profile",
+    "/profile/changepassword",
+    "/admin",
+    "/admin/cvlist",
+    "/auth/signin",
+    "/auth/signup",
+  ],
 };

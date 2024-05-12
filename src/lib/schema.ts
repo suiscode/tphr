@@ -56,14 +56,27 @@ export const educationSchema = z.object({
   }),
 });
 
-export const NewPasswordSchema = z.object({
-  password: z.string().min(6, {
-    message: "Minimum 6 characters required",
-  }),
-});
+export const NewPasswordSchema = z
+  .object({
+    password: z.string().min(6, {
+      message: "Minimum 6 characters required",
+    }),
+    confirmPassword: z.string().min(6, {
+      message: "Minimum 6 characters required",
+    }),
+  })
+  .superRefine(({ confirmPassword, password }, ctx) => {
+    if (confirmPassword !== password) {
+      ctx.addIssue({
+        code: "custom",
+        message: "Password does not match",
+        path: ["confirmPassword"],
+      });
+    }
+  });
 
 export const ResetSchema = z.object({
-  email: z.string().email({ message: "И-мэйл хаягаа оруулна уу" }),
+  email: z.string().email({ message: "Enter your email" }),
 });
 
 export const RegisterSchema = z
@@ -79,6 +92,28 @@ export const RegisterSchema = z
       ctx.addIssue({
         code: "custom",
         message: "Нүүг үг таарсангүй",
+        path: ["confirmPassword"],
+      });
+    }
+  });
+
+export const ChangePasswordSchema = z
+  .object({
+    currentPassword: z.string().min(1, {
+      message: "Field is  required",
+    }),
+    password: z.string().min(6, {
+      message: "Minimum 6 characters required",
+    }),
+    confirmPassword: z.string().min(6, {
+      message: "Minimum 6 characters required",
+    }),
+  })
+  .superRefine(({ confirmPassword, password }, ctx) => {
+    if (confirmPassword !== password) {
+      ctx.addIssue({
+        code: "custom",
+        message: "Password does not match",
         path: ["confirmPassword"],
       });
     }

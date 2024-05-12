@@ -86,9 +86,9 @@ export function CDataTable<TData, TValue>({
             />
           ))}
         </div>
-        <div className="flex gap-4 w-full">
+        <div className="flex gap-6 w-full">
           {searchSelect.map((item) => (
-            <div key={item.placeholder} className="flex flex-col">
+            <div key={item.placeholder} className="flex flex-col w-[180px]">
               <h1>{item.placeholder}</h1>
 
               <Select
