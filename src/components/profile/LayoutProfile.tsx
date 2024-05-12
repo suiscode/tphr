@@ -22,7 +22,8 @@ const LayoutProfile = ({ user }: { user: UserInterface }) => {
   const handleSignOut = async () => {
     try {
       await axios.put("/api/auth/login");
-      push("/");
+      window.location.reload();
+
     } catch (e) {
       console.log(e);
     }

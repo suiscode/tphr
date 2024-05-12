@@ -43,25 +43,11 @@ export default function LoginForm() {
     startTransition(async () => {
       try {
         const res = await axios.post("/api/auth/login", values);
-        console.log(res.data);
-        if (
-          res.data.success === "Email is not verified, verification email sent"
-        ) {
-          setSuccess(res.data.success);
-
-          return;
-        }
-
-        router.push("/profile");
-        if (res.data.twoFactor) {
-          setShowTwoFactor(true);
-          toast({
-            variant: "destructive",
-            title: "Successfully ",
-            description: "Logged In",
-          });
-        }
+        window.location.reload();
+        console.log(res);
       } catch (e: any) {
+        console.log(e);
+
         if (e.response.data.error) {
           form.reset();
         }
