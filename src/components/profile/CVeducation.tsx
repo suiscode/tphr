@@ -47,7 +47,7 @@ const CVeducation = ({
 
   return (
     <CVWrapper label={"Education"}>
-      <DialogWrapper>
+      <DialogWrapper label={"Education"}>
         <Form {...form}>
           <form
             className="space-y-6 relative w-full"

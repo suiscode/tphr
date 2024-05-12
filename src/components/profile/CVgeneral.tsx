@@ -41,7 +41,7 @@ const CVgeneral = ({ userCv, onSubmit }: { userCv: userCV; onSubmit: any }) => {
 
   return (
     <CVWrapper label={"General"}>
-      <DialogWrapper>
+      <DialogWrapper label={"General"}>
         <Form {...form}>
           <form
             className="space-y-6 relative w-full"

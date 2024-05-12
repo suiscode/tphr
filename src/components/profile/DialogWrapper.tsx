@@ -11,7 +11,13 @@ import {
 import { BsPencil } from "react-icons/bs";
 import { Button } from "../ui/button";
 
-const DialogWrapper = ({ children }: { children: React.ReactNode }) => {
+const DialogWrapper = ({
+  children,
+  label,
+}: {
+  children: React.ReactNode;
+  label: string;
+}) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -21,7 +27,7 @@ const DialogWrapper = ({ children }: { children: React.ReactNode }) => {
       </DialogTrigger>
       <DialogContent className="sm:max-w-md items-center flex flex-col">
         <DialogHeader>
-          <DialogTitle>General</DialogTitle>
+          <DialogTitle>{label}</DialogTitle>
         </DialogHeader>
         {children}
       </DialogContent>

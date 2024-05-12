@@ -43,7 +43,7 @@ const CVcontact = ({ userCv, onSubmit }: { userCv: userCV; onSubmit: any }) => {
 
   return (
     <CVWrapper label={"Contact"}>
-      <DialogWrapper>
+      <DialogWrapper label={"Contact"}>
         <Form {...form}>
           <form
             className="space-y-6 relative w-full"

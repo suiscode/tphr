@@ -39,7 +39,7 @@ const CVworkex = ({ userCv, onSubmit }: { userCv: userCV; onSubmit: any }) => {
 
   return (
     <CVWrapper label={"Career path"}>
-      <DialogWrapper>
+      <DialogWrapper label={"Career path"}>
         <Form {...form}>
           <form
             className="space-y-6 relative w-full"
