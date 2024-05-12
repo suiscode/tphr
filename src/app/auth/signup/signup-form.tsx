@@ -37,7 +37,7 @@ export default function SignpForm() {
     startTransition(async () => {
       try {
         const res = await axios.post("/api/auth/register", values);
-        router.push("auth/signin");
+        router.push("/auth/signin");
       } catch (e: any) {
         toast({
           variant: "destructive",

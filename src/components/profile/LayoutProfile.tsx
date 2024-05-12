@@ -5,31 +5,35 @@ import { BsPencil } from "react-icons/bs";
 import axios from "axios";
 import { UserInterface } from "@/lib/interface";
 import { RiPagesLine } from "react-icons/ri";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { IoIosLogOut } from "react-icons/io";
 import Link from "next/link";
 import Image from "next/image";
 
 const LayoutProfile = ({ user }: { user: UserInterface }) => {
   const pathname = usePathname();
-  const [uploadImage, setUploadImage] = useState<File>();
   const [image, setImage] = useState<string | null>();
   useEffect(() => {
+    console.log(user.image);
     setImage(user.image);
   }, []);
+  const { push } = useRouter();
 
-  const SignOut = () => {};
+  const handleSignOut = async () => {
+    try {
+      await axios.put("/api/auth/login");
+      push("/");
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   const handleUpload = async (event: ChangeEvent<HTMLInputElement>) => {
     const res = await axios(`/api/r2?id=${user._id}`);
     const uploadUrl = res.data.uploadUrl;
-    const id = res.data.id;
-    console.log(res);
-
     const img = event.target.files?.[0];
-
     try {
-      const res = await axios.put(uploadUrl, img, {
+      await axios.put(uploadUrl, img, {
         headers: {
           "Content-Type": img?.type,
         },
@@ -42,7 +46,6 @@ const LayoutProfile = ({ user }: { user: UserInterface }) => {
   const onImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
-      setUploadImage(file);
       setImage(URL.createObjectURL(file));
       handleUpload(event);
     }
@@ -92,7 +95,7 @@ const LayoutProfile = ({ user }: { user: UserInterface }) => {
         })}
         <button
           type="submit"
-          onClick={() => SignOut()}
+          onClick={() => handleSignOut()}
           className="w-full flex gap-2 hover:bg- items-center cursor-pointer px-4 rounded-2xl py-2 text-black hover:bg-black/5 hover:text-[#AB0E66]/70"
         >
           <IoIosLogOut className="w-5 h-5" />

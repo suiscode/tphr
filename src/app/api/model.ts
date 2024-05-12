@@ -44,6 +44,9 @@ const cvSchema = new Schema({
   career: String,
   salaryExpectency: Number,
   workDuration: String,
+  instagram: String,
+  facebook: String,
+  linkedin: String,
   user: [{ type: Schema.Types.ObjectId, ref: "User" }],
 });
 

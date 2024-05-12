@@ -20,6 +20,9 @@ export interface userCV {
   career?: string;
   salaryExpectency?: number;
   workDuration?: string;
+  instagram?: string;
+  facebook?: string;
+  linkedin?: string;
 }
 
 export interface UserInterface {

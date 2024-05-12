@@ -7,15 +7,12 @@ import {
   FormLabel,
   FormMessage,
 } from "../../components/ui/form";
-import React, { useState } from "react";
+import React from "react";
 import * as z from "zod";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { generalSchema } from "../../lib/schema";
-
-import { useToast } from "@/components/ui/use-toast";
-import axios from "axios";
-import { UserInterface } from "@/lib/interface";
+import { userCV } from "@/lib/interface";
 import CVWrapper from "./CVwrapper";
 import DialogWrapper from "./DialogWrapper";
 import { Input } from "../ui/input";
@@ -29,10 +26,7 @@ import {
   SelectValue,
 } from "../ui/select";
 
-const CVgeneral = ({ user }: { user: UserInterface }) => {
-  const [userCv, setUserCV] = useState(user.cv);
-  const { toast } = useToast();
-
+const CVgeneral = ({ userCv, onSubmit }: { userCv: userCV; onSubmit: any }) => {
   const form = useForm<z.infer<typeof generalSchema>>({
     resolver: zodResolver(generalSchema),
     defaultValues: {
@@ -44,32 +38,9 @@ const CVgeneral = ({ user }: { user: UserInterface }) => {
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof generalSchema>) => {
-    console.log(values);
-
-    try {
-      const res = await axios.post("/api/auth/register", values);
-      toast({
-        variant: "default",
-        title: "Successfully ",
-        description: "Signed Up",
-      });
-    } catch (e: any) {
-      toast({
-        variant: "destructive",
-        title: "Error Occured",
-        description: e.response.data.error,
-      });
-    }
-  };
-  const color = "text-[#AB0E66]";
 
   return (
     <CVWrapper label={"General"}>
-      <div>
-        <h1 className="font-medium">About me</h1>
-        <h1>{userCv?.about}</h1>
-      </div>
       <DialogWrapper>
         <Form {...form}>
           <form
@@ -142,7 +113,7 @@ const CVgeneral = ({ user }: { user: UserInterface }) => {
                     >
                       <FormControl>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select a verified email to display" />
+                          <SelectValue placeholder="Select your gender" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -156,11 +127,10 @@ const CVgeneral = ({ user }: { user: UserInterface }) => {
                 )}
               />
             </div>
-            <Button type="submit" variant="secondary">
-              Save
-            </Button>
-            {/* {!form.formState.isValid ? (
-              
+            {!form.formState.isValid ? (
+              <Button type="submit" variant="secondary">
+                Save
+              </Button>
             ) : (
               <DialogFooter className="sm:justify-start">
                 <DialogClose asChild>
@@ -169,22 +139,34 @@ const CVgeneral = ({ user }: { user: UserInterface }) => {
                   </Button>
                 </DialogClose>
               </DialogFooter>
-            )} */}
+            )}
           </form>
         </Form>
       </DialogWrapper>
+      <div>
+        <h1 className="font-medium">About me</h1>
+        <h1 className="text-black/50">{userCv?.about}</h1>
+      </div>
       <div className="flex">
-        <div className="w-1/2 space-y-4">
-          <h1 className="font-medium">First name</h1>
-          <h1>{userCv?.firstName}</h1>
-          <h1 className="font-medium">Last name</h1>
-          <h1>{userCv?.lastName}</h1>
+        <div className="w-1/2 space-y-2">
+          <div className="space-y-0">
+            <h1 className="font-medium">First name</h1>
+            <h1 className="text-black/50">{userCv?.firstName}</h1>
+          </div>
+          <div className="space-y-0">
+            <h1 className="font-medium">Last name</h1>
+            <h1 className="text-black/50">{userCv?.lastName}</h1>
+          </div>
         </div>
-        <div className="w-1/2 space-y-4">
-          <h1 className="font-medium">ID number</h1>
-          <h1>{userCv?.registerID}</h1>
-          <h1 className="font-medium">Gender</h1>
-          <h1>{userCv?.gender}</h1>
+        <div className="w-1/2 space-y-2">
+          <div className="space-y-0">
+            <h1 className="font-medium">ID number</h1>
+            <h1 className="text-black/50">{userCv?.registerID}</h1>
+          </div>
+          <div className="space-y-0">
+            <h1 className="font-medium">Gender</h1>
+            <h1 className="text-black/50">{userCv?.gender}</h1>
+          </div>
         </div>
       </div>
     </CVWrapper>
